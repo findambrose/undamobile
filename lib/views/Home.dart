@@ -7,38 +7,22 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Stack(
-          children: <Widget>[
-            // Container(
-            //   //Google Map
-            //   decoration: BoxDecoration(
-            //     color: Colors.green
-            //     // image: DecorationImage(image: AssetImage('images/g-map.jpg'), fit: BoxFit.fill)
-            //   ),
-            // ),
+         child: Container(
+          child: Center(child: 
+          Column(
+            children: [
+              Text('Vehicle Owner Home Page'),
+              SizedBox(height: 15,),
+              RaisedButton(onPressed: (){
+                Navigator.pushNamed(context, '/requestInit');
+              },
+              child: Text("Request Mechanic"),)
 
-            Stack(
-              children: <Widget>[
-                CustomPaint(
-                  painter: MyPainter(),
-                ),
-                //   Container(
-                //   //AppBar icons
-                //   child: Row(
-                //     children: <Widget>[
-                //       Text('App bar content')
-                //     ],
-                //   ),
-                // ),
-              ],
-            ),
-
-            Column(
-              //Contains search and listview
-              children: <Widget>[],
-            )
-          ],
+            ],
+          ),),
         ),
+
+            
       ),
     );
   }

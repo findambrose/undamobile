@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:unda/models/POJOs/user.dart';
+import 'package:unda/Data%20Layer/models/POJOs/user.dart';
+
 
 class AllResults extends StatelessWidget {
   final List<User> users = [
