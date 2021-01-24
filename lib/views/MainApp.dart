@@ -10,28 +10,30 @@ import 'package:unda/views/Auth/Register.dart';
 import 'package:unda/views/Home.dart';
 
 import 'OnBoarding/OnBoarding.dart';
+import 'Vehicle/problem_description.dart';
 
 class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Unda',
-        theme: ThemeData(
-         
-          primarySwatch: Colors.yellow,
-        ),
+      debugShowCheckedModeBanner: false,
+      title: 'Unda',
+      theme: ThemeData(
+        primarySwatch: Colors.yellow,
+      ),
       // home: MechanicDetailsPage(),
       initialRoute: '/',
-         routes: {
-           '/' : (context)=>OnBoarding(),
-           '/login' : (context)=>Login(),
-           '/register' : (context)=>Register(),
-           '/mech-home' : (context)=>MechanicHome(),
-           '/home' : (context)=>Home(),           
-           '/addvehicle' : (context)=>AddVehicle(),
-           '/profile': (context)=>Profile(),
-         },
-      );
+      routes: {
+        '/': (context) => OnBoarding(),
+        '/login': (context) => Login(),
+        '/register': (context) => Register(),
+        '/mech-home': (context) => MechanicHome(),
+        '/home': (context) => Home(),
+        '/addVehicle': (context) => AddVehicle(),
+        '/profile': (context) => Profile(),
+        '/problem': (context) => ProblemDescription(),
+        '/allResults': (context) => AllResults(),
+      },
+    );
   }
 }
