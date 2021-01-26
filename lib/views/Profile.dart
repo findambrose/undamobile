@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:unda/BLoC/UserProfileBloc.dart';
@@ -33,9 +34,9 @@ class _ProfileState extends State<Profile> {
   }
 
   setUpProfile() {
-    Map uid = ModalRoute.of(context).settings.arguments;
+    
     UserProfileBloc userProfileBloc = UserProfileBloc(UserProfile());
-    userProfileBloc.getSink().add(uid['key']);
+    userProfileBloc.getSink().add(FirebaseAuth.instance.currentUser.uid);
     _profileInfoStream = userProfileBloc.streamProfileInfo;
   }
 

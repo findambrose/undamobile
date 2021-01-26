@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:unda/BLoC/SearchBloc.dart';
 import 'package:unda/Data%20Layer/Repositories/MechanicRepo.dart';
+import 'package:unda/Data%20Layer/models/POJOs/mechanic.dart';
 import 'package:unda/Data%20Layer/models/POJOs/user.dart';
-import 'package:unda/Data%20Layer/models/mechanic.dart';
 
-class AllResults extends StatelessWidget {
+class AllResults extends StatefulWidget {
+  @override
+  _AllResultsState createState() => _AllResultsState();
+}
+
+class _AllResultsState extends State<AllResults> {
   Map<String, dynamic> dataFromAddVehiclePage = {};
+
   SearchBloc _bloc = SearchBloc(MechanicRepo());
+
+  @override
+  void didChangeDependencies() {
+    _setUpResults();
+
+    super.didChangeDependencies();
+  }
+
   final List<User> users = [
     User(
       location: 'Mombasa',
@@ -82,9 +96,7 @@ class AllResults extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    dataFromAddVehiclePage = dataFromAddVehiclePage.isEmpty
-        ? ModalRoute.of(context).settings.arguments
-        : dataFromAddVehiclePage;
+    dataFromAddVehiclePage = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       backgroundColor: Color(0xff1E1E1E),
       appBar: AppBar(
@@ -101,7 +113,12 @@ class AllResults extends StatelessWidget {
             }
 
             if (snapshot.hasData) {
+              //  if(snapshot.data == null)
+
+              print("Printing all results");
+
               List<Mechanic> mechanics = snapshot.data;
+
               return Padding(
                 padding: const EdgeInsets.only(top: 15),
                 child: ListView.builder(
@@ -145,10 +162,33 @@ class AllResults extends StatelessWidget {
                                       ListTile(
                                         //  contentPadding: EdgeInsets.only(),
                                         //Listtile
+                                        onTap: () {
+                                          Navigator.pushNamed(
+                                              context, "/mechDets",
+                                              arguments: {
+                                                "name": mechanics[index].name,
+                                                "startingPrice":
+                                                    mechanics[index]
+                                                        .startingPrice,
+                                                "location":
+                                                    mechanics[index].location,
+                                                "rating":
+                                                    mechanics[index].rating,
+                                                "mechanicUid": mechanics[index]
+                                                    .mechanicUid,
+                                                "vehicleId":
+                                                    dataFromAddVehiclePage[
+                                                        "vehicleId"],
+                                                         "requestData":
+                                                    dataFromAddVehiclePage[
+                                                        "requestData"]
+                                              });
+                                        },
                                         title: Text(mechanics[index].name,
                                             style:
                                                 TextStyle(color: Colors.white)),
-                                        subtitle: Text(users[index].location,
+                                        subtitle: Text(
+                                            mechanics[index].location,
                                             style:
                                                 TextStyle(color: Colors.grey)),
                                         trailing: Text(
@@ -169,15 +209,15 @@ class AllResults extends StatelessWidget {
                                               MainAxisAlignment.spaceBetween,
                                           children: <Widget>[
                                             Text(
-                                              mechanics[index].startingPrice +
-                                                  ' Star Rated',
+                                              mechanics[index].rating +
+                                                  'Star Rated',
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 12),
                                             ),
                                             //SizedBox(width: 30,),
                                             Text(
-                                              users[index].availability,
+                                              mechanics[index].availability,
                                               style: TextStyle(
                                                   fontSize: 12,
                                                   color: mechanics[index]
@@ -206,5 +246,16 @@ class AllResults extends StatelessWidget {
             );
           }),
     );
+  }
+
+  _setUpResults() {
+    dataFromAddVehiclePage = dataFromAddVehiclePage.isEmpty
+        ? ModalRoute.of(context).settings.arguments
+        : dataFromAddVehiclePage;
+
+    Map<String, dynamic> requestData = dataFromAddVehiclePage["requestData"];
+    String userLocation = requestData["location"]["location"];
+
+    _bloc.behaviorSubject.sink.add(userLocation);
   }
 }

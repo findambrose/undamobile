@@ -33,6 +33,7 @@ class MainApp extends StatelessWidget {
         '/profile': (context) => Profile(),
         '/problem': (context) => ProblemDescription(),
         '/allResults': (context) => AllResults(),
+        '/mechDets': (context) => MechanicDetailsPage(),
       },
     );
   }

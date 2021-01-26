@@ -160,7 +160,7 @@ class _LoginState extends State<Login> {
 
     if (role == 'Mechanic') {
       //Move to mechanic homepage with profile info
-      Navigator.pushNamed(context, '/profile', arguments: {"uid": uid});
+      Navigator.pushNamed(context, '/profile');
     } else {
       //move to vehicle owner homepage
       Navigator.pushNamed(context, '/home');

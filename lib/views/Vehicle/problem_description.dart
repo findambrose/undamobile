@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 
-class ProblemDescription extends StatelessWidget {
-  TextEditingController _problemController;
-  TextEditingController _locationDescController;
+class ProblemDescription extends StatefulWidget {
+  @override
+  _ProblemDescriptionState createState() => _ProblemDescriptionState();
+}
+
+class _ProblemDescriptionState extends State<ProblemDescription> {
+  TextEditingController _problemController = TextEditingController();
+
+  TextEditingController _locationDescController = TextEditingController();
+
   Map<String, String> location = {};
+
   @override
   Widget build(BuildContext context) {
     location =
