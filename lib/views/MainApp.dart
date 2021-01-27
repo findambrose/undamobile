@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:unda/Views/mechanic/mechanic_home.dart';
+import 'package:unda/Views/mechanic/mechanic_orders.dart';
+import 'package:unda/Views/mechanic/update_profile.dart';
+import 'package:unda/Views/orders_history.dart';
+import 'package:unda/Views/vehicle%20owner/vehicle_owner_orders.dart';
 import 'package:unda/views/Profile.dart';
 
 import 'package:unda/views/Vehicle/AddVehicle.dart';
@@ -34,7 +38,10 @@ class MainApp extends StatelessWidget {
         '/problem': (context) => ProblemDescription(),
         '/allResults': (context) => AllResults(),
         '/mechDets': (context) => MechanicDetailsPage(),
-      },
+        '/mechOrders': (context) => MechanicOrdersList(),
+        '/vOwnerOrders': (context) => VehicleOwnerOrdersList(),
+        '/orderHistory': (context) => OrderHistory(), 
+        '/updateProfile': (context) => UpdateProfile(),     },
     );
   }
 }

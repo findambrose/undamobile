@@ -32,6 +32,7 @@ class VehicleOwnerOrdersList extends StatelessWidget {
                 imageUrl: 'images/avatar.png',
                 date: '12/10/2020',
                 carModel: 'Toyota Axion',
+                
              ),
                VehicleOwnerOrderWidget(
                 name: 'Ezekiel Mbiti',

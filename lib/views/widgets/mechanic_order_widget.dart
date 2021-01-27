@@ -2,22 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:unda/views/widgets/order_history_listtile.dart';
 
 class MechanicOrderWidget extends StatelessWidget {
-
-  var carModel, date, imageUrl, name, status;
-  MechanicOrderWidget({this.carModel, this.status, this.date, this.imageUrl, this.name});
+  var carModel,
+      date,
+      imageUrl,
+      name,
+     
+      acceptanceStatus,
+      completionStatus;
+  MechanicOrderWidget(
+      {this.carModel,
+      this.acceptanceStatus,
+      this.completionStatus,
+      
+     
+      this.date,
+      this.imageUrl,
+      this.name});
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: <Widget>[
-         OrderHistoryListTile(
-               carModel: carModel,
-               date: date,
-               imageUrl: imageUrl,
-               name: name,
-               status: status,
-             ),
-             SizedBox(height: 10),
+          OrderHistoryListTile(
+            carModel: carModel,
+            date: date,
+            imageUrl: imageUrl,
+            name: name,
+            acceptanceStatus: acceptanceStatus,
+            completionStatus: completionStatus
+          ),
+          SizedBox(height: 10),
           Row(
             //Actions.
             //mechanic - accept. reject. cancel. request supplemental
@@ -27,25 +41,26 @@ class MechanicOrderWidget extends StatelessWidget {
                 child: Text('Accept'),
                 color: Colors.green,
               ),
-                RaisedButton(
+              RaisedButton(
                 onPressed: () {},
                 child: Text('Reject'),
                 color: Colors.red,
               ),
-                RaisedButton(
+              RaisedButton(
                 onPressed: () {},
                 child: Text('Cancel'),
                 color: Colors.redAccent,
               ),
-
-                RaisedButton(
+              RaisedButton(
                 onPressed: () {},
                 child: Text('Request supplemental'),
                 color: Colors.blue,
               ),
             ],
           ),
-          SizedBox(height: 10,)
+          SizedBox(
+            height: 10,
+          )
         ],
       ),
     );

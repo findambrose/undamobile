@@ -200,7 +200,9 @@ class _MechanicDetailsPageState extends State<MechanicDetailsPage> {
                                       "location": location,
                                       "acceptanceStatus": "pending",
                                       "supplementaryRepairRequest": "",
-                                      "paymentStatus": "unpaid"
+                                      "supRepairRequestStatus": "",
+                                      "paymentStatus": "unpaid",
+                                      "dateCreated": DateTime.now()
                                     };
                                     _bloc.behaviorSubject.sink.add(_repairData);
                                   },

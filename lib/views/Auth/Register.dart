@@ -307,7 +307,7 @@ class _RegisterState extends State<Register> {
 
     if (role == 'Mechanic') {
       //Move to mechanic homepage with profile info
-      Navigator.pushNamed(context, '/mech-home');
+      Navigator.pushNamed(context, '/profile');
     } else {
       //move to vehicle owner homepage
       Navigator.pushNamed(context, '/home');

@@ -14,7 +14,7 @@ class VehicleOwnerOrderWidget extends StatelessWidget {
             date: date,
             imageUrl: imageUrl,
             name: name,
-            status: status,
+            completionStatus: status,
           ),
           SizedBox(height: 10),
           Row(
@@ -35,6 +35,11 @@ class VehicleOwnerOrderWidget extends StatelessWidget {
               RaisedButton(
                 onPressed: () {},
                 child: Text('Reject supplemental request'),
+                color: Colors.red,
+              ),
+               RaisedButton(
+                onPressed: () {},
+                child: Text('Complete'),
                 color: Colors.red,
               ),
             ],

@@ -4,8 +4,8 @@ class SideMenuItem extends StatelessWidget {
   String text;
   IconData iconData;
   Color color, containerColor;
-
-  SideMenuItem({this.color, this.iconData, this.text, this.containerColor});
+  Function onPressed;
+  SideMenuItem({this.color, this.onPressed, this.iconData, this.text, this.containerColor});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +24,7 @@ class SideMenuItem extends StatelessWidget {
             label: Text(text),
             color: Colors.transparent,
             textColor: color,
-            onPressed: () {
-              //go to screen
-            },
+            onPressed: onPressed
           ),
         ],
       ),

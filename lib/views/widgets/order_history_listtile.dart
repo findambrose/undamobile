@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 class OrderHistoryListTile extends StatelessWidget {
-  var date, imageUrl, name, carModel, status;
+  var date, imageUrl, name, carModel,  acceptanceStatus, completionStatus;
 
-
-  OrderHistoryListTile({this.imageUrl, this.status, this.name, this.carModel, this.date});
+  OrderHistoryListTile({this.imageUrl, this.acceptanceStatus, this.completionStatus, this.name, this.carModel, this.date});
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -14,7 +13,7 @@ class OrderHistoryListTile extends StatelessWidget {
                 ),
                 title: Text(name),
                 isThreeLine: true,
-                subtitle: Text(carModel + ' ' + status),
+                subtitle: Text(carModel + ': ' + completionStatus),
                 trailing: Text(date),
               );
   }
