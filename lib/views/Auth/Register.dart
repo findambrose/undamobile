@@ -21,7 +21,8 @@ class _RegisterState extends State<Register> {
   TextEditingController _lnameController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
+    TextEditingController _phoneController = TextEditingController();
+
   TextEditingController _confirmPasswordController = TextEditingController();
 
   // final TextEditingController _passwordController = new TextEditingController();
@@ -143,6 +144,23 @@ class _RegisterState extends State<Register> {
                   decoration: InputDecoration(
                     labelText: 'Email Address',
                     hintText: 'e.g ambrose@gmail.com',
+                  ),
+                ),
+
+                 SizedBox(
+                  height: 5,
+                ),
+                TextFormField(
+                 
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please your enter email address';
+                    }
+                  },
+                  controller: _phoneController,
+                  decoration: InputDecoration(
+                    labelText: 'Phone',
+                    hintText: 'e.g 072300000',
                   ),
                 ),
                 SizedBox(
@@ -292,6 +310,7 @@ class _RegisterState extends State<Register> {
         'lastName': _lnameController.text.toString(),
         'email': _emailController.text.toString(),
         'password': _confirmPasswordController.text.toString(),
+          'phone': _phoneController.text.toString(),
       };
       //2. process formdata
       debugPrint("Message: Form validated");

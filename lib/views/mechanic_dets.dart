@@ -192,7 +192,7 @@ class _MechanicDetailsPageState extends State<MechanicDetailsPage> {
                                       "vehicleId": mechanicData["vehicleId"],
                                       "vOwnerUid": vOwnerUid,
                                       "mechnaicUid":
-                                          mechanicData["mechanicUid"],
+                                          mechanicData["mechnaicUid"],
                                       "addressDecsription": problemData["locationDescription"],
                                       "problemDescription": problemData["problemDescription"],
                                       "repairType": ["Engine", "Tyre", "Body"],
@@ -201,8 +201,8 @@ class _MechanicDetailsPageState extends State<MechanicDetailsPage> {
                                       "acceptanceStatus": "pending",
                                       "supplementaryRepairRequest": "",
                                       "supRepairRequestStatus": "",
-                                      "paymentStatus": "unpaid",
-                                      "dateCreated": DateTime.now()
+                                      "paymentStatus": "unpaid"
+                                     
                                     };
                                     _bloc.behaviorSubject.sink.add(_repairData);
                                   },

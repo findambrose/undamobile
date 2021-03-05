@@ -13,7 +13,7 @@ class OrderHistoryListTile extends StatelessWidget {
                 ),
                 title: Text(name),
                 isThreeLine: true,
-                subtitle: Text(carModel + ': ' + completionStatus),
+                subtitle: Text(carModel + ': ' + acceptanceStatus),
                 trailing: Text(date),
               );
   }

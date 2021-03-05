@@ -130,7 +130,9 @@ if(snapshot.hasError){
                       ),
                       SizedBox(height: 10),
                       RaisedButton(
-                        child: Text('Update'),
+                        child: Text('Update', style: TextStyle(
+                          color: Colors.green
+                        ),),
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
                             Map<String, dynamic> profileInfo = {

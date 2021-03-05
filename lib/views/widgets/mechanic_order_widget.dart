@@ -29,7 +29,7 @@ class MechanicOrderWidget extends StatelessWidget {
             imageUrl: imageUrl,
             name: name,
             acceptanceStatus: acceptanceStatus,
-            completionStatus: completionStatus
+            
           ),
           SizedBox(height: 10),
           Row(
@@ -51,11 +51,7 @@ class MechanicOrderWidget extends StatelessWidget {
                 child: Text('Cancel'),
                 color: Colors.redAccent,
               ),
-              RaisedButton(
-                onPressed: () {},
-                child: Text('Request supplemental'),
-                color: Colors.blue,
-              ),
+             
             ],
           ),
           SizedBox(

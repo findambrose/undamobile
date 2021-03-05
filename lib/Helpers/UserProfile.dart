@@ -6,21 +6,24 @@ class UserProfile {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
 
     print("Getting Profile Info....");
-    QueryDocumentSnapshot element;
-    
-      await users.where('userUid', isEqualTo: id).get().then((value) {
+    QueryDocumentSnapshot myElement;
+
+    await users.where('userUid', isEqualTo: id).get().then((value) {
+      print("success::::::::::::::::::::");
       value.docs.forEach((element) {
-        //print("Element Firstname is: " + element["firstname"]);
+         myElement = element;
+        print("Element Firstname is: " + element.data()["firstName"]);
       });
-      print("SHOULD NOT FIRE ON ERROR");
+     
       snapshot = value;
-      element = element;
+       print("SHOULD NOT FIRE ON ERROR");
+     
     }).catchError((e) {
       print(
           "Error caught:: Error code==>${e.code} \n Error Message: ${e.message}");
     });
-      
-    print("Element is: $element");
+
+    print("Element is:  $myElement");
     return snapshot;
   }
 }

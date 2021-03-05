@@ -55,7 +55,7 @@ class FirebaseRegister {
         user = userCredential.user;
         userInput['userUid'] = user.uid;
           userInput['profileStatus'] = "";
-           userInput['phone'] ="";
+           
         print("Firebase Email: ${user.email}");
         print("Should not fire on error");
         userToUserModelNoError(user, role);

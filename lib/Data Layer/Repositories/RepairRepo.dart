@@ -25,7 +25,7 @@ class RepairRepo {
   Future<List<Repair>> getPendingOrders(String uid) async {
     await FirebaseFirestore.instance
         .collection('repairs')
-        .where('mechanicUid', isEqualTo: uid)
+        .where('mechnaicUid', isEqualTo: uid)
         .where('acceptanceStatus', isEqualTo: "pending")
         .get()
         .then((value) {
@@ -36,7 +36,7 @@ class RepairRepo {
             acceptanceStatus: element.data()['acceptanceStatus'],
             addressDescription: element.data()['addressDecsription'],
             completionStatus: element.data()['comlpletionStatus'],
-            mechanicUid: element.data()['mechanicUid'],
+            mechanicUid: element.data()['mechnaicUid'],
             vOwnerUid: element.data()['vOwnerUid'],
             paymentStatus: element.data()['paymentStatus'],
             problemDescription: element.data()['problemDecsription'],
@@ -57,7 +57,7 @@ class RepairRepo {
   Future<List<Repair>> getCompletedOrders(String uid) async {
     await FirebaseFirestore.instance
         .collection('repairs')
-        .where('mechanicUid', isEqualTo: uid)
+        .where('mechnaicUid', isEqualTo: uid)
         .where('acceptanceStatus', isEqualTo: "pending")
         .get()
         .then((value) {
@@ -68,7 +68,7 @@ class RepairRepo {
             acceptanceStatus: element.data()['acceptanceStatus'],
             addressDescription: element.data()['addressDecsription'],
             completionStatus: element.data()['comlpletionStatus'],
-            mechanicUid: element.data()['mechanicUid'],
+            mechanicUid: element.data()['mechnaicUid'],
             vOwnerUid: element.data()['vOwnerUid'],
             paymentStatus: element.data()['paymentStatus'],
             supRepairRequestStatus: element.data()['supRepairRequestStatus'],
@@ -107,79 +107,51 @@ matches to predefined Repair info list
     Repair repair;
     QuerySnapshot allVehicles;
     QuerySnapshot allUsersSnapshot;
-    await FirebaseFirestore.instance.collection('users').get().then((element) {
-      allUsersSnapshot = element;
-    }).catchError((e) {});
-    await FirebaseFirestore.instance
-        .collection('vehicles')
-        .get()
-        .then((vehicleQDocSnapshot) {
-      allVehicles = vehicleQDocSnapshot;
-    }).catchError((e) {});
+    // await FirebaseFirestore.instance.collection('users').get().then((element) {
+    //   print("Got all users");
+    //   allUsersSnapshot = element;
+    // }).catchError((e) {});
+    // await FirebaseFirestore.instance
+    //     .collection('vehicles')
+    //     .get()
+    //     .then((vehicleQDocSnapshot) {
+    //       print("Got all vehicles");
+    //   allVehicles = vehicleQDocSnapshot;
+    // }).catchError((e) {});
 
     await FirebaseFirestore.instance
         .collection('repairs')
-        .where('mechanicUid', isEqualTo: uid)
+        .where('mechnaicUid', isEqualTo: uid)
         .get()
         .then((value) {
+          print("Got all repairs by vehicles");
       value.docs.forEach((element) async {
         //For each repair record, get each users record and
         //compare ids
-        allUsersSnapshot.docs.forEach((userQDocSnapshot) {
-          if (userQDocSnapshot.data()['userUid'] ==
-              element.data()['vOwnerUid']) {
+        
+         
             repair = Repair(
-              location: element.data()['vehicleId'],
+              location: element.data()['county'],
               acceptanceStatus: element.data()['acceptanceStatus'],
               addressDescription: element.data()['addressDecsription'],
               completionStatus: element.data()['completionStatus'],
-              mechanicUid: element.data()['mechanicUid'],
+              mechanicUid: element.data()['mechnaicUid'],
               vOwnerUid: element.data()['vOwnerUid'],
               paymentStatus: element.data()['paymentStatus'],
               supRepairRequestStatus: element.data()['supRepairRequestStatus'],
               problemDescription: element.data()['problemDecsription'],
-              repairType: element.data()['repairType'],
+              // repairType: element.data()['repairType'],
               supplementaryRepairRequest:
                   element.data()['supplementaryRepairRequest'],
               vehicleId: element.data()['vehicleId'],
-              dateCreated: element.data()['dateCreated'],
+              //dateCreated: element.data()['dateCreated'],
             );
 
-            repair.setVehicleOwnerName(userQDocSnapshot.data()['firstName'] +
-                userQDocSnapshot.data()['lastName']);
-          }
+           
 
-          if (userQDocSnapshot.data()['userUid'] ==
-              element.data()['mechanicUid']) {
-            repair = Repair(
-              location: element.data()['vehicleId'],
-              acceptanceStatus: element.data()['acceptanceStatus'],
-              addressDescription: element.data()['addressDecsription'],
-              completionStatus: element.data()['completionStatus'],
-              mechanicUid: element.data()['mechanicUid'],
-              vOwnerUid: element.data()['vOwnerUid'],
-              paymentStatus: element.data()['paymentStatus'],
-              supRepairRequestStatus: element.data()['supRepairRequestStatus'],
-              problemDescription: element.data()['problemDecsription'],
-              repairType: element.data()['repairType'],
-              supplementaryRepairRequest:
-                  element.data()['supplementaryRepairRequest'],
-              vehicleId: element.data()['vehicleId'],
-              dateCreated: element.data()['dateCreated'],
-            );
+        
 
-            repair.setMechanicsName(userQDocSnapshot.data()['firstName'] +
-                userQDocSnapshot.data()['lastName']);
-          }
-        });
-
-        allVehicles.docs.forEach((vehicleQDocSnapshot) {
-          if (vehicleQDocSnapshot.data()['vOwnerUid'] ==
-              element.data()['vOwnerUid']) {
-            repair.setVehicleName(vehicleQDocSnapshot.data()['name']);
-            repair.setVehicleModel(vehicleQDocSnapshot.data()['model']);
-          }
-        });
+       
 
         
 
@@ -302,7 +274,7 @@ matches to predefined Repair info list
             acceptanceStatus: element.data()['acceptanceStatus'],
             addressDescription: element.data()['addressDecsription'],
             completionStatus: element.data()['comlpletionStatus'],
-            mechanicUid: element.data()['mechanicUid'],
+            mechanicUid: element.data()['mechnaicUid'],
             vOwnerUid: element.data()['vOwnerUid'],
             paymentStatus: element.data()['paymentStatus'],
             supRepairRequestStatus: element.data()['supRepairRequestStatus'],

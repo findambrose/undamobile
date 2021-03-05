@@ -18,7 +18,7 @@ class Repair {
       vOwnerName,
       vehicleModel,
       vehicleName;
-  List<String> repairType;
+  var repairType;
 
   Repair({
     this.mechanicUid,

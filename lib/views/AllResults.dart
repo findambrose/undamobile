@@ -164,7 +164,7 @@ class _AllResultsState extends State<AllResults> {
                                         //Listtile
                                         onTap: () {
                                           Navigator.pushNamed(
-                                              context, "/mechDets",
+                                              context, "/mechDetails",
                                               arguments: {
                                                 "name": mechanics[index].name,
                                                 "startingPrice":

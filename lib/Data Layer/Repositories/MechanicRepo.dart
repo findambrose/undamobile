@@ -56,7 +56,7 @@ class MechanicRepo {
     return response;
   }
 
-  getAll() {}
+  
   Future<List<Mechanic>> getAllByLocation(String location) async {
     print("Location: $location");
     await mechanicsCollection

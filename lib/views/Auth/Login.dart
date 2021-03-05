@@ -115,7 +115,7 @@ class _LoginState extends State<Login> {
                           });
                           print("User : $userData");
                           _navigateUser(role, context, id);
-                          return Text("Success. Redirecting...");
+                          return AlertDialog(content: Text("Success. Redirecting..."));
                         } else {
                           return AlertDialog(
                               content: Text(mySnapshot["error"]),
@@ -156,7 +156,7 @@ class _LoginState extends State<Login> {
 
   _navigateUser(String role, BuildContext context, String uid) async {
     //wait for 5 secs
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 2));
 
     if (role == 'Mechanic') {
       //Move to mechanic homepage with profile info
